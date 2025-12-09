@@ -1,5 +1,5 @@
 xrun(64): 23.09-s006: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	23.09-s006: Started on Dec 09, 2025 at 10:52:37 PKT
+TOOL:	xrun(64)	23.09-s006: Started on Dec 09, 2025 at 18:42:58 PKT
 xrun
 	-f file.f
 		-64
@@ -7,9 +7,34 @@ xrun
 		-sv
 		-uvm
 		-timescale 1ns/1ns
-		-incdir /home/cc/Fahad_DV/Final_Project/proj/UVM_RANJDEIL_CORE
-		../UVM_RANJDEIL_CORE/aes_pkg.sv
+		-incdir /home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/UVM
+		-incdir /home/cc/Fahad_DV/Final_Project/AES_by_Rijndael/ENCRYPTION_UNIT_V1/CIPHER_UNIT/sv
+		../UVM/aes_pkg.sv
+		../UVM/aes_interface.sv
+		aes_hw_top.sv
 		aes_top.sv
+		../CIPHER_UNIT/sv/S_Box.sv
+		../CIPHER_UNIT/sv/Inv_S_Box.sv
+		../CIPHER_UNIT/sv/Xtime.sv
+		../CIPHER_UNIT/sv/GFunc.sv
+		../CIPHER_UNIT/sv/HFunc.sv
+		../CIPHER_UNIT/sv/MixColumn.sv
+		../CIPHER_UNIT/sv/ARK.sv
+		../CIPHER_UNIT/sv/BS.sv
+		../CIPHER_UNIT/sv/MC.sv
+		../CIPHER_UNIT/sv/KEXP.sv
+		../CIPHER_UNIT/sv/ByteSub.sv
+		../CIPHER_UNIT/sv/State.sv
+		../CIPHER_UNIT/sv/Register.sv
+		../CIPHER_UNIT/sv/dem1_8.sv
+		../CIPHER_UNIT/sv/dem1_9.sv
+		../CIPHER_UNIT/sv/dem1_11.sv
+		../CIPHER_UNIT/sv/demux1_11.sv
+		../CIPHER_UNIT/sv/mux3_1.sv
+		../CIPHER_UNIT/sv/mux15_1.sv
+		../CIPHER_UNIT/sv/RS.sv
+		../CIPHER_UNIT/sv/CU_S.sv
+		../CIPHER_UNIT/sv/aes.sv
 		+UVM_TESTNAME=simple_test
 		+UVM_VERBOSITY=UVM_FULL
 		+SVSEED=random
@@ -197,9 +222,54 @@ xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cds.
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-Recompiling... reason: file './aes_seqs.sv' is newer than expected.
-	expected: Tue Dec  9 10:43:55 2025
-	actual:   Tue Dec  9 10:52:33 2025
+DEFINE std       ./STD
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
+DEFINE synopsys  ./SYNOPSYS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,2): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/SYNOPSYS' (cds.lib command ignored).
+DEFINE ieee      ./IEEE
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,3): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/IEEE' (cds.lib command ignored).
+DEFINE ambit     ./AMBIT
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,4): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/AMBIT' (cds.lib command ignored).
+DEFINE vital_memory ./VITAL_MEMORY
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,5): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/VITAL_MEMORY' (cds.lib command ignored).
+DEFINE ncutils ./NCUTILS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,6): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCUTILS' (cds.lib command ignored).
+DEFINE ncinternal ./NCINTERNAL
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,7): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCINTERNAL' (cds.lib command ignored).
+DEFINE ncmodels ./NCMODELS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,8): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCMODELS' (cds.lib command ignored).
+DEFINE xmutils ./XMUTILS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,9): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMUTILS' (cds.lib command ignored).
+DEFINE xminternal ./XMINTERNAL
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,10): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMINTERNAL' (cds.lib command ignored).
+DEFINE xmmodels ./XMMODELS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,11): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMMODELS' (cds.lib command ignored).
+DEFINE cds_assertions ./CDS_ASSERTIONS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,12): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_ASSERTIONS' (cds.lib command ignored).
+DEFINE cds_inhconn ./CDS_INHCONN
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,13): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_INHCONN' (cds.lib command ignored).
+DEFINE cds_spicelib ./CDS_SPICELIB
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_SPICELIB' (cds.lib command ignored).
+DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
+|
+xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
+Recompiling... reason: file './aes_driver.sv' is newer than expected.
+	expected: Tue Dec  9 18:08:38 2025
+	actual:   Tue Dec  9 18:09:13 2025
 DEFINE std       ./STD
 |
 xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
@@ -291,6 +361,7 @@ xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cd
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
+xmvlog: *W,NOTIND: unable to access -INCDIR /home/cc/Fahad_DV/Final_Project/AES_by_Rijndael/ENCRYPTION_UNIT_V1/CIPHER_UNIT/sv (No such file or directory).
 DEFINE std       ./STD
 |
 xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
@@ -336,15 +407,14 @@ xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cd
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-file: ../UVM_RANJDEIL_CORE/aes_pkg.sv
-	package worklib.aes_pkg:sv
+xmvlog: *W,NOTIND: unable to access -INCDIR /home/cc/Fahad_DV/Final_Project/AES_by_Rijndael/ENCRYPTION_UNIT_V1/CIPHER_UNIT/sv (No such file or directory).
+file: ../UVM/aes_interface.sv
+	interface worklib.aes_interface:sv
 		errors: 0, warnings: 0
-file: aes_top.sv
-	module worklib.aes_top:sv
-		errors: 0, warnings: 0
-xmvlog: *W,SPDUSD: Include directory /home/cc/Fahad_DV/Final_Project/proj/UVM_RANJDEIL_CORE given but not used.
+file: ../CIPHER_UNIT/sv/aes.sv
+xmvlog: *W,SPDUSD: Include directory /home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/UVM given but not used.
 	Total errors/warnings found outside modules and primitives:
-		errors: 0, warnings: 16
+		errors: 0, warnings: 17
 DEFINE std       ./STD
 |
 xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
@@ -489,377 +559,9 @@ xmelab: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cd
 		cdns_uvm_pkg
 		aes_pkg
 		aes_top
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-DEFINE std       ./STD
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
-DEFINE synopsys  ./SYNOPSYS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,2): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/SYNOPSYS' (cds.lib command ignored).
-DEFINE ieee      ./IEEE
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,3): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/IEEE' (cds.lib command ignored).
-DEFINE ambit     ./AMBIT
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,4): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/AMBIT' (cds.lib command ignored).
-DEFINE vital_memory ./VITAL_MEMORY
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,5): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/VITAL_MEMORY' (cds.lib command ignored).
-DEFINE ncutils ./NCUTILS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,6): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCUTILS' (cds.lib command ignored).
-DEFINE ncinternal ./NCINTERNAL
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,7): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCINTERNAL' (cds.lib command ignored).
-DEFINE ncmodels ./NCMODELS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,8): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCMODELS' (cds.lib command ignored).
-DEFINE xmutils ./XMUTILS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,9): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMUTILS' (cds.lib command ignored).
-DEFINE xminternal ./XMINTERNAL
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,10): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMINTERNAL' (cds.lib command ignored).
-DEFINE xmmodels ./XMMODELS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,11): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMMODELS' (cds.lib command ignored).
-DEFINE cds_assertions ./CDS_ASSERTIONS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,12): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_ASSERTIONS' (cds.lib command ignored).
-DEFINE cds_inhconn ./CDS_INHCONN
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,13): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_INHCONN' (cds.lib command ignored).
-DEFINE cds_spicelib ./CDS_SPICELIB
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_SPICELIB' (cds.lib command ignored).
-DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
-|
-xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-		worklib.aes_top:sv <0x46ee1709>
-			streams:  65, words: 44642
-		worklib.aes_pkg:sv <0x160e19aa>
-			streams: 449, words: 522287
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		                       Instances  Unique
-		Modules:                       1       1
-		Verilog packages:              5       5
-		Registers:                 13724   10242
-		Named events:                  4      12
-		Initial blocks:              286     156
-		Parallel blocks:              26      27
-		Assertions:                    2       2
-		SV Class declarations:       200     314
-		SV Class specializations:    380     380
-		Simulation timescale:        1ns
-	Writing initial simulation snapshot: worklib.aes_top:sv
-DEFINE std       ./STD
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
-DEFINE synopsys  ./SYNOPSYS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,2): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/SYNOPSYS' (cds.lib command ignored).
-DEFINE ieee      ./IEEE
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,3): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/IEEE' (cds.lib command ignored).
-DEFINE ambit     ./AMBIT
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,4): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/AMBIT' (cds.lib command ignored).
-DEFINE vital_memory ./VITAL_MEMORY
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,5): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/VITAL_MEMORY' (cds.lib command ignored).
-DEFINE ncutils ./NCUTILS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,6): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCUTILS' (cds.lib command ignored).
-DEFINE ncinternal ./NCINTERNAL
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,7): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCINTERNAL' (cds.lib command ignored).
-DEFINE ncmodels ./NCMODELS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,8): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/NCMODELS' (cds.lib command ignored).
-DEFINE xmutils ./XMUTILS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,9): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMUTILS' (cds.lib command ignored).
-DEFINE xminternal ./XMINTERNAL
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,10): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMINTERNAL' (cds.lib command ignored).
-DEFINE xmmodels ./XMMODELS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,11): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/XMMODELS' (cds.lib command ignored).
-DEFINE cds_assertions ./CDS_ASSERTIONS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,12): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_ASSERTIONS' (cds.lib command ignored).
-DEFINE cds_inhconn ./CDS_INHCONN
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,13): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_INHCONN' (cds.lib command ignored).
-DEFINE cds_spicelib ./CDS_SPICELIB
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_SPICELIB' (cds.lib command ignored).
-DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
-|
-xmsim: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-Loading snapshot worklib.aes_top:sv .................... Done
-SVSEED set randomly from command line: 217071433
-xcelium> source /home/cc/mnt/XCELIUM2309/tools/xcelium/files/xmsimrc
-xcelium> source /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
-xcelium> run
-----------------------------------------------------------------
-CDNS-UVM-1.1d (23.09-s006)
-(C) 2007-2013 Mentor Graphics Corporation
-(C) 2007-2013 Cadence Design Systems, Inc.
-(C) 2006-2013 Synopsys, Inc.
-(C) 2011-2013 Cypress Semiconductor Corp.
-----------------------------------------------------------------
-
-  ***********       IMPORTANT RELEASE NOTES         ************
-
-  You are using a version of the UVM library that has been compiled
-  with `UVM_NO_DEPRECATED undefined.
-  See http://www.eda.org/svdb/view.php?id=3313 for more details.
-
-  You are using a version of the UVM library that has been compiled
-  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
-  See http://www.eda.org/svdb/view.php?id=3770 for more details.
-
-      (Specify +UVM_NO_RELNOTES to turn off this notice)
-
-UVM_INFO @ 0: reporter [RNTST] Running test simple_test...
-UVM_INFO aes_test_tb.sv(24) @ 0: uvm_test_top [simple_test] base_test build_phase executing
-UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
-----------------------------------------------------------------------
-Name                         Type                     Size  Value     
-----------------------------------------------------------------------
-uvm_test_top                 simple_test              -     @2584     
-  tb                         aes_tb                   -     @2621     
-    env1                     aes_env                  -     @2692     
-      agent                  aes_agent                -     @2723     
-        driver               aes_driver               -     @3425     
-          rsp_port           uvm_analysis_port        -     @3524     
-          seq_item_port      uvm_seq_item_pull_port   -     @3475     
-        monitor              aes_monitor              -     @2756     
-        sequencer            aes_sequencer            -     @2786     
-          rsp_export         uvm_analysis_export      -     @2844     
-          seq_item_export    uvm_seq_item_pull_imp    -     @3394     
-          arbitration_queue  array                    0     -         
-          lock_queue         array                    0     -         
-          num_last_reqs      integral                 32    'd1       
-          num_last_rsps      integral                 32    'd1       
-        is_active            uvm_active_passive_enum  1     UVM_ACTIVE
-----------------------------------------------------------------------
-
-UVM_INFO aes_driver.sv(64) @ 0: uvm_test_top.tb.env1.agent.driver [aes_driver] Running Simulation Driver
-UVM_INFO aes_monitor.sv(58) @ 0: uvm_test_top.tb.env1.agent.monitor [aes_monitor] Running AES Monitor
-UVM_INFO aes_sequencer.sv(12) @ 0: uvm_test_top.tb.env1.agent.sequencer [aes_sequencer] Running Simulation Sequencer
-UVM_INFO aes_agent.sv(37) @ 0: uvm_test_top.tb.env1.agent [aes_agent] Running Simulation Agent
-UVM_INFO aes_env.sv(16) @ 0: uvm_test_top.tb.env1 [aes_env] Running Simulation ...
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1391) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] Starting default sequence 'rand_packet' for phase 'run'
-UVM_INFO aes_seqs.sv(20) @ 0: uvm_test_top.tb.env1.agent.sequencer@@rand_packet [rand_packet] Raise objection
-UVM_INFO aes_seqs.sv(52) @ 0: uvm_test_top.tb.env1.agent.sequencer@@rand_packet [rand_packet] Executing rand_packet sequence
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'pre_reset'
-UVM_INFO aes_driver.sv(40) @ 0: uvm_test_top.tb.env1.agent.driver [aes_driver] Sending Packet :
----------------------------------------------------------------------------------------------------
-Name                           Type          Size  Value                                           
----------------------------------------------------------------------------------------------------
-req                            aes_packet    -     @3581                                           
-  state_i                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h14958dba                                      
-    [1]                        integral      32    'h48e9d533                                      
-    [2]                        integral      32    'h674f202c                                      
-    [3]                        integral      32    'h9f9e1e66                                      
-  state_o                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h0                                             
-    [1]                        integral      32    'h0                                             
-    [2]                        integral      32    'h0                                             
-    [3]                        integral      32    'h0                                             
-  KEY                          sa(integral)  1     -                                               
-    [0]                        integral      32    'hf08cb16e                                      
-    [1]                        integral      32    'hdc6cf976                                      
-    [2]                        integral      32    'h9e0985a0                                      
-    [3]                        integral      32    'h7f000f4c                                      
-    [4]                        integral      32    'h56697a8c                                      
-  enc_dec                      integral      1     'h0                                             
-  KL                           integral      2     'h3                                             
-  CF                           integral      1     'h0                                             
-  begin_time                   time          64    0                                               
-  depth                        int           32    'd2                                             
-  parent sequence (name)       string        11    rand_packet                                     
-  parent sequence (full name)  string        48    uvm_test_top.tb.env1.agent.sequencer.rand_packet
-  sequencer                    string        36    uvm_test_top.tb.env1.agent.sequencer            
----------------------------------------------------------------------------------------------------
-
-UVM_INFO aes_driver.sv(40) @ 0: uvm_test_top.tb.env1.agent.driver [aes_driver] Sending Packet :
----------------------------------------------------------------------------------------------------
-Name                           Type          Size  Value                                           
----------------------------------------------------------------------------------------------------
-req                            aes_packet    -     @3770                                           
-  state_i                      sa(integral)  1     -                                               
-    [0]                        integral      32    'ha9b6157a                                      
-    [1]                        integral      32    'hd0fddcb1                                      
-    [2]                        integral      32    'h85c330f7                                      
-    [3]                        integral      32    'h7dd02a31                                      
-  state_o                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h0                                             
-    [1]                        integral      32    'h0                                             
-    [2]                        integral      32    'h0                                             
-    [3]                        integral      32    'h0                                             
-  KEY                          sa(integral)  1     -                                               
-    [0]                        integral      32    'hb806fdfc                                      
-    [1]                        integral      32    'hf5610d4c                                      
-    [2]                        integral      32    'hb9fe0ce2                                      
-    [3]                        integral      32    'h8ea8fc30                                      
-    [4]                        integral      32    'h7bfc10cc                                      
-  enc_dec                      integral      1     'h0                                             
-  KL                           integral      2     'h2                                             
-  CF                           integral      1     'h0                                             
-  begin_time                   time          64    0                                               
-  depth                        int           32    'd2                                             
-  parent sequence (name)       string        11    rand_packet                                     
-  parent sequence (full name)  string        48    uvm_test_top.tb.env1.agent.sequencer.rand_packet
-  sequencer                    string        36    uvm_test_top.tb.env1.agent.sequencer            
----------------------------------------------------------------------------------------------------
-
-UVM_INFO aes_driver.sv(40) @ 0: uvm_test_top.tb.env1.agent.driver [aes_driver] Sending Packet :
----------------------------------------------------------------------------------------------------
-Name                           Type          Size  Value                                           
----------------------------------------------------------------------------------------------------
-req                            aes_packet    -     @3781                                           
-  state_i                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h1dfd6d30                                      
-    [1]                        integral      32    'h3608b4b                                       
-    [2]                        integral      32    'he894c2c0                                      
-    [3]                        integral      32    'hc6cce93c                                      
-  state_o                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h0                                             
-    [1]                        integral      32    'h0                                             
-    [2]                        integral      32    'h0                                             
-    [3]                        integral      32    'h0                                             
-  KEY                          sa(integral)  1     -                                               
-    [0]                        integral      32    'h442238dd                                      
-    [1]                        integral      32    'h1a2e174d                                      
-    [2]                        integral      32    'hd1d61a8f                                      
-    [3]                        integral      32    'h96adc5b2                                      
-    [4]                        integral      32    'h5e1f832d                                      
-  enc_dec                      integral      1     'h0                                             
-  KL                           integral      2     'h2                                             
-  CF                           integral      1     'h0                                             
-  begin_time                   time          64    0                                               
-  depth                        int           32    'd2                                             
-  parent sequence (name)       string        11    rand_packet                                     
-  parent sequence (full name)  string        48    uvm_test_top.tb.env1.agent.sequencer.rand_packet
-  sequencer                    string        36    uvm_test_top.tb.env1.agent.sequencer            
----------------------------------------------------------------------------------------------------
-
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'reset'
-UVM_INFO aes_driver.sv(40) @ 0: uvm_test_top.tb.env1.agent.driver [aes_driver] Sending Packet :
----------------------------------------------------------------------------------------------------
-Name                           Type          Size  Value                                           
----------------------------------------------------------------------------------------------------
-req                            aes_packet    -     @3745                                           
-  state_i                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h160ba64a                                      
-    [1]                        integral      32    'h1f97d2c1                                      
-    [2]                        integral      32    'h72f97430                                      
-    [3]                        integral      32    'h4eea3f47                                      
-  state_o                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h0                                             
-    [1]                        integral      32    'h0                                             
-    [2]                        integral      32    'h0                                             
-    [3]                        integral      32    'h0                                             
-  KEY                          sa(integral)  1     -                                               
-    [0]                        integral      32    'h1b50404d                                      
-    [1]                        integral      32    'h5a4714cc                                      
-    [2]                        integral      32    'h7c2484cf                                      
-    [3]                        integral      32    'h9bc130f0                                      
-    [4]                        integral      32    'hf1cf6839                                      
-  enc_dec                      integral      1     'h0                                             
-  KL                           integral      2     'h2                                             
-  CF                           integral      1     'h0                                             
-  begin_time                   time          64    0                                               
-  depth                        int           32    'd2                                             
-  parent sequence (name)       string        11    rand_packet                                     
-  parent sequence (full name)  string        48    uvm_test_top.tb.env1.agent.sequencer.rand_packet
-  sequencer                    string        36    uvm_test_top.tb.env1.agent.sequencer            
----------------------------------------------------------------------------------------------------
-
-UVM_INFO aes_driver.sv(40) @ 0: uvm_test_top.tb.env1.agent.driver [aes_driver] Sending Packet :
----------------------------------------------------------------------------------------------------
-Name                           Type          Size  Value                                           
----------------------------------------------------------------------------------------------------
-req                            aes_packet    -     @3779                                           
-  state_i                      sa(integral)  1     -                                               
-    [0]                        integral      32    'hf0e0a2fd                                      
-    [1]                        integral      32    'h9584c30c                                      
-    [2]                        integral      32    'h152f9cb2                                      
-    [3]                        integral      32    'he3c29f21                                      
-  state_o                      sa(integral)  1     -                                               
-    [0]                        integral      32    'h0                                             
-    [1]                        integral      32    'h0                                             
-    [2]                        integral      32    'h0                                             
-    [3]                        integral      32    'h0                                             
-  KEY                          sa(integral)  1     -                                               
-    [0]                        integral      32    'h9d998607                                      
-    [1]                        integral      32    'ha44c8b4e                                      
-    [2]                        integral      32    'h628e73a3                                      
-    [3]                        integral      32    'hb707fd7                                       
-    [4]                        integral      32    'h44e696fb                                      
-  enc_dec                      integral      1     'h0                                             
-  KL                           integral      2     'h3                                             
-  CF                           integral      1     'h0                                             
-  begin_time                   time          64    0                                               
-  depth                        int           32    'd2                                             
-  parent sequence (name)       string        11    rand_packet                                     
-  parent sequence (full name)  string        48    uvm_test_top.tb.env1.agent.sequencer.rand_packet
-  sequencer                    string        36    uvm_test_top.tb.env1.agent.sequencer            
----------------------------------------------------------------------------------------------------
-
-UVM_INFO aes_seqs.sv(35) @ 0: uvm_test_top.tb.env1.agent.sequencer@@rand_packet [rand_packet] drop objection
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'post_reset'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'pre_configure'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'configure'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'post_configure'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'pre_main'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'main'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'post_main'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'pre_shutdown'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'shutdown'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/seq/uvm_sequencer_base.svh(1385) @ 0: uvm_test_top.tb.env1.agent.sequencer [PHASESEQ] No default phase sequence for phase 'post_shutdown'
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1245) @ 200: reporter [TEST_DONE] All end-of-test objections have been dropped. Calling stop tasks
-UVM_INFO /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 200: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-UVM_INFO aes_driver.sv(60) @ 200: uvm_test_top.tb.env1.agent.driver [aes_driver] Report: AES driver sent 5 packets
-UVM_INFO aes_monitor.sv(54) @ 200: uvm_test_top.tb.env1.agent.monitor [aes_monitor] Report: AES Monitor Collected 0 Packets
-
---- UVM Report catcher Summary ---
-
-
-Number of demoted UVM_FATAL reports  :    0
-Number of demoted UVM_ERROR reports  :    0
-Number of demoted UVM_WARNING reports:    0
-Number of caught UVM_FATAL reports   :    0
-Number of caught UVM_ERROR reports   :    0
-Number of caught UVM_WARNING reports :    0
-
---- UVM Report Summary ---
-
-** Report counts by severity
-UVM_INFO :   33
-UVM_WARNING :    0
-UVM_ERROR :    0
-UVM_FATAL :    0
-** Report counts by id
-[PHASESEQ]    13
-[RNTST]     1
-[TEST_DONE]     2
-[UVMTOP]     1
-[aes_agent]     1
-[aes_driver]     7
-[aes_env]     1
-[aes_monitor]     2
-[aes_sequencer]     1
-[rand_packet]     3
-[simple_test]     1
-Simulation complete via $finish(1) at time 200 NS + 44
-/home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
-xcelium> exit
-TOOL:	xrun(64)	23.09-s006: Exiting on Dec 09, 2025 at 10:52:39 PKT  (total: 00:00:02)
+		demux1_11
+            @(posedge vif.drvstart);
+                                 |
+xmelab: *E,CUVUNF (./aes_monitor.sv,123|33): Hierarchical name component lookup failed for 'drvstart' at 'aes_pkg'.
+xrun: *E,ELBERR: Error (*E) or soft error (*SE) occurred during elaboration (status 1), exiting.
+TOOL:	xrun(64)	23.09-s006: Exiting on Dec 09, 2025 at 18:42:58 PKT  (total: 00:00:00)

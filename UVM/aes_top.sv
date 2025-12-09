@@ -8,15 +8,17 @@ module aes_top;
  `include "aes_test_tb.sv"
 
 
+aes_interface aes_if_inst(CLK, CLR);
+
 
   // Instantiate the DUT / hw_top
-//   hw_top hw();
+   aes_hw_top hw();
 
   // Set virtual interfaces for UVCs
   initial begin
 
-
-    // yapp_vif_config::set(null, "*", "vif", hw.in0);
+ aes_vif_config::set(null, "*", "vif", aes_if_inst);
+    aes_vif_config::set(null, "*", "vif", hw.aes_if_inst);
     // channel_vif_config::set(null, "*.chan0.*", "vif", hw.chan_if0);
     // channel_vif_config::set(null, "*.chan1.*", "vif", hw.chan_if1);
     // channel_vif_config::set(null, "*.chan2.*", "vif", hw.chan_if2);

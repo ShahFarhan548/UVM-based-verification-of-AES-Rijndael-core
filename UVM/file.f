@@ -8,28 +8,45 @@
 
 // Include directories
 
--incdir "/home/cc/Fahad_DV/Final_Project/proj/UVM_RANJDEIL_CORE"
-// -incdir "/home/cc/Fahad_DV/UVM/lab6/task1/clock_and_reset/sv"
-// -incdir "/home/cc/Fahad_DV/UVM/lab6/task1/hbus/sv"
+-incdir "/home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/UVM"
+-incdir "/home/cc/Fahad_DV/Final_Project/AES_by_Rijndael/ENCRYPTION_UNIT_V1/CIPHER_UNIT/sv"
 
 // Compile UVC package & interface files
 
 // YAPP UVC
-../UVM_RANJDEIL_CORE/aes_pkg.sv
-// router_module_pkg.sv
-// /home/cc/Fahad_DV/UVM/lab6/task1/clock_and_reset/sv/clock_and_reset_pkg.sv
-// /home/cc/Fahad_DV/UVM/lab6/task1/channel/sv/channel_pkg.sv
-// /home/cc/Fahad_DV/UVM/lab6/task1/hbus/sv/hbus_pkg.sv
+../UVM/aes_pkg.sv
+../UVM/aes_interface.sv
 
-// yapp_if.sv
-// /home/cc/Fahad_DV/UVM/lab6/task1/clock_and_reset/sv/clock_and_reset_if.sv
-// /home/cc/Fahad_DV/UVM/lab6/task1/channel/sv/channel_if.sv
-// /home/cc/Fahad_DV/UVM/lab6/task1/hbus/sv/hbus_if.sv
 
-	// clkgen.sv
-    //     hw_top.sv
+	  
+      aes_hw_top.sv
 	aes_top.sv
-	// yapp_router.sv
+	
+ ../CIPHER_UNIT/sv/S_Box.sv
+ ../CIPHER_UNIT/sv/Inv_S_Box.sv
+ ../CIPHER_UNIT/sv/Xtime.sv
+
+ ../CIPHER_UNIT/sv/GFunc.sv
+ ../CIPHER_UNIT/sv/HFunc.sv
+
+ ../CIPHER_UNIT/sv/MixColumn.sv
+../CIPHER_UNIT/sv/ARK.sv
+../CIPHER_UNIT/sv/BS.sv
+../CIPHER_UNIT/sv/MC.sv
+ ../CIPHER_UNIT/sv/KEXP.sv
+ ../CIPHER_UNIT/sv/ByteSub.sv
+ ../CIPHER_UNIT/sv/State.sv
+ ../CIPHER_UNIT/sv/Register.sv
+ ../CIPHER_UNIT/sv/dem1_8.sv
+ ../CIPHER_UNIT/sv/dem1_9.sv
+ ../CIPHER_UNIT/sv/dem1_11.sv
+ ../CIPHER_UNIT/sv/demux1_11.sv
+ ../CIPHER_UNIT/sv/mux3_1.sv
+ ../CIPHER_UNIT/sv/mux15_1.sv
+../CIPHER_UNIT/sv/RS.sv
+../CIPHER_UNIT/sv/CU_S.sv
+ ../CIPHER_UNIT/sv/aes.sv
+ 
 	
 
 // Simulation options
@@ -38,6 +55,16 @@
 +SVSEED=random
 
 //-gui -access +rwc
+
+
+
+
+
+
+
+
+
+
 
 
 

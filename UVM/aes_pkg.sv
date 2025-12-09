@@ -5,7 +5,7 @@ package aes_pkg;
   `include "uvm_macros.svh"
 
 
-// typedef uvm_config_db#(virtual aes_interface) aes_vif_config;
+typedef uvm_config_db#(virtual aes_interface) aes_vif_config;
 
  
   `include "aes_packet.sv"
