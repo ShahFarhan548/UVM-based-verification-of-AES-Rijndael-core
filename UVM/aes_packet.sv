@@ -1,3 +1,4 @@
+
 class aes_packet extends uvm_sequence_item;
 
    bit enc_dec;                
@@ -9,12 +10,12 @@ class aes_packet extends uvm_sequence_item;
        bit [31:0] state_o[3:0];
 
   `uvm_object_utils_begin(aes_packet)
-    `uvm_field_array_int(state_i, UVM_ALL_ON | UVM_HEX)
-    `uvm_field_array_int(state_o, UVM_ALL_ON | UVM_HEX)
-    `uvm_field_array_int(KEY, UVM_ALL_ON | UVM_HEX)
+   `uvm_field_sarray_int(state_i, UVM_ALL_ON)
+    `uvm_field_sarray_int(state_o, UVM_ALL_ON)
+    `uvm_field_sarray_int(KEY,     UVM_ALL_ON)
     `uvm_field_int(enc_dec, UVM_ALL_ON)
     `uvm_field_int(KL, UVM_ALL_ON)
-    `uvm_field_int(CF)
+    `uvm_field_int(CF, UVM_ALL_ON)
   `uvm_object_utils_end
 
   function new(string name="aes_packet");
@@ -26,3 +27,6 @@ class aes_packet extends uvm_sequence_item;
   }
 
 endclass
+
+
+  

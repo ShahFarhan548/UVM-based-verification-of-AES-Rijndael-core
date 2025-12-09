@@ -1,8 +1,10 @@
+
+
 class aes_sequencer extends uvm_sequencer #(aes_packet);
 
 	`uvm_component_utils(aes_sequencer)
 	
-	function new(string name = "aes_sequencer", uvm_component parent = "null");
+	function new(string name="aes_sequencer", uvm_component parent=null);
 		super.new(name, parent);
 	endfunction
 	
@@ -11,3 +13,6 @@ class aes_sequencer extends uvm_sequencer #(aes_packet);
 	endfunction
 
 endclass
+
+
+
