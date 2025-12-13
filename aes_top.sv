@@ -13,7 +13,7 @@ module aes_top;
   // Set virtual interfaces for UVCs
   initial begin
     // Only set the virtual interface from hw
-    aes_vif_config::set(null, "uvm_test_top.tb.env.agent.*", "vif", hw.aes_if_inst);
+    aes_vif_config::set(null, "uvm_test_top.tb.env.*", "vif", hw.aes_if_inst);
 
     // Run the UVM test
     run_test();

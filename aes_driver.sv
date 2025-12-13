@@ -66,7 +66,7 @@ endtask
 // working 
 
 task get_and_drive();
-    wait(vif.CLR == 1'b1);
+  //  wait(vif.CLR == 1'b1);
     
     @(posedge vif.CLK);
     
@@ -74,13 +74,6 @@ task get_and_drive();
     
     forever begin
         seq_item_port.get_next_item(pkt);
-
-        if (pkt.KL == 0)
-            repeat(20) @(posedge vif.CLK);
-        
-
-        else if(pkt.KL == 2)
-            repeat(3) @(posedge vif.CLK);
 
         `uvm_info(get_type_name(), $sformatf("Sending Packet :\n%s", pkt.sprint()), UVM_HIGH)
         
@@ -111,6 +104,46 @@ task get_and_drive();
 endtask
 
 
+/*
+task get_and_drive();
+    wait(vif.CLR == 1'b1);
+    @(posedge vif.CLK);
+    
+    vif.driver_active = 1;
+    
+    forever begin
+        seq_item_port.get_next_item(pkt);
+        
+        `uvm_info(get_type_name(), $sformatf("Driver: Sending Packet %0d", num_sent+1), UVM_LOW)
+        
+        void'(begin_tr(pkt, "Driver_AES_Packet"));
+        
+        vif.send_to_dut(
+            pkt.enc_dec,
+            pkt.KL,
+            pkt.KEY,
+            pkt.state_i
+        );
+        
+        // Trigger event that packet was sent
+        -> vif.driver_sent_packet;
+        
+        vif.packets_sent++;
+        
+        // Wait for DUT to complete this packet
+        @(posedge vif.CLK iff vif.CF == 1'b1);
+        `uvm_info(get_type_name(), $sformatf("Driver: Packet %0d completed by DUT", num_sent+1), UVM_MEDIUM)
+        
+        // Wait for CF to go low before next packet
+        @(posedge vif.CLK iff vif.CF == 1'b0);
+        
+        end_tr(pkt);
+        
+        num_sent++;
+        seq_item_port.item_done();
+    end
+endtask
+*/
 
 
   	task reset_signals();

@@ -49,44 +49,162 @@ class rand_packet extends aes_seqs;
     aes_packet req;
     `uvm_info(get_type_name(), "Executing rand_packet sequence", UVM_LOW)
     
-    repeat (100) begin  // ← Changed from 1 to 10
-      //`uvm_do_with(req, {KL == 2;})
-      `uvm_do(req)
+    repeat (30) begin  // ← Changed from 1 to 10
+      `uvm_do_with(req, {KL != 0;})
+      //`uvm_do(req)
     end
-
+   //  #200000;
     //#1700; 
 endtask
 
 endclass : rand_packet
 
 
+class packet_encryption extends aes_seqs;
+
+  `uvm_object_utils(packet_encryption)
+
+  function new(string name="packet_encryption");
+    super.new(name);
+  endfunction
+
+
+  task body();
+    aes_packet req;
+
+    // Create a new AES packet
+  //  req = aes_packet::type_id::create("req");
+
+    `uvm_info(get_type_name(), "Executing packet_encryption sequence", UVM_LOW)
+
+    repeat (2) begin
+//    `uvm_do_with(req, { enc_dec == 1; })
+    `uvm_do_with(req, {
+    state_i[0] == 32'h7b2bf37a;
+    state_i[1] == 32'h42cadae7;
+    state_i[2] == 32'h83263eda;
+    state_i[3] == 32'h6bbf7f0c;
+
+    foreach(KEY[i]) KEY[i] == 5;
+
+    enc_dec == 1;
+
+    KL == 2;
+    })
+
+    end
+
+  endtask
+
+
+endclass
+
+
+
+class packet_decryption extends aes_seqs;
+
+  `uvm_object_utils(packet_decryption)
+
+  function new(string name="packet_decryption");
+    super.new(name);
+  endfunction
+
+  task body();
+     aes_packet req;
+    `uvm_info(get_type_name(), "Executing packet_decryption sequence", UVM_LOW)
+
+    repeat (2) begin
+    //`uvm_do_with(req, { enc_dec == 0; KL != 0; })
+      
+    `uvm_do_with(req, {
+    state_i[0] == 32'ha8b92c3c;
+    state_i[1] == 32'he230e353;
+    state_i[2] == 32'h36814fe6;
+    state_i[3] == 32'hf1c6b71d;
+
+    foreach(KEY[i]) KEY[i] == 5;
+
+    enc_dec == 0;
+
+    KL == 2;
+    })
+
+    end
+
+  endtask
+
+
+
+endclass
+
+
+class zero_key extends aes_seqs;
+  `uvm_object_utils(zero_key)
+
+  function new(string name="zero_key");
+    super.new(name);
+  endfunction
+
+  task body();
+    aes_packet req;
+
+    // Create packet object
+    req = aes_packet::type_id::create("req");
+
+    `uvm_info(get_type_name(), "Executing zero_key sequence", UVM_LOW)
+
+    // Repeat 50 times
+    repeat (50) begin
+      `uvm_do_with(req, { foreach (KEY[i]) KEY[i] == 0; })
+    end
+  endtask
+endclass
+
+
+
+class zero_input extends aes_seqs;
+  `uvm_object_utils(zero_input)
+
+  function new(string name="zero_input");
+    super.new(name);
+  endfunction
+
+  task body();
+    aes_packet req;
+
+    // Create packet object
+    req = aes_packet::type_id::create("req");
+
+    `uvm_info(get_type_name(), "Executing zero_input sequence", UVM_LOW)
+
+    // Repeat 50 times
+    repeat (30) begin
+      `uvm_do_with(req, { foreach (state_i[i]) state_i[i] == 0; enc_dec == 1; })
+    end
+  endtask
+endclass
+
+
 /*
-class rand_packet extends aes_seqs;
-    `uvm_object_utils(rand_packet)
-    
-    int num_packets = 10;
-    int cycles_per_packet = 9;  // Adjust based on your DUT
-    
-    function new(string name="rand_packet");
-        super.new(name);
-    endfunction
-    
-    task body();
-        aes_packet req;
-        int total_delay;
-        
-        `uvm_info(get_type_name(), $sformatf("Sending %0d packets", num_packets), UVM_LOW)
-        
-        repeat (num_packets) begin
-            `uvm_do(req)
-        end
-        
-        // Calculate delay: packets × cycles × some margin
-        total_delay = num_packets * cycles_per_packet * 20;  // 20× margin for safety
-        
-        `uvm_info(get_type_name(), $sformatf("Waiting %0d time units for DUT to complete", total_delay), UVM_LOW)
-        #total_delay;
-        
-    endtask
-endclass : rand_packet
+class reset_packet extends aes_seqs;
+
+  `uvm_object_utils(reset_packet)
+
+  function new(string name="reset_packet");
+    super.new(name);
+  endfunction
+
+  task body()
+     aes_packet req;
+     req = aes_packet::type_id::create("req");
+
+    `uvm_info(get_type_name(), "Executing reset sequence", UVM_LOW)
+
+     repeat (20) begin
+      `uvm_do_with(req, { CLR == 1; enc_dec == 1; })
+    end
+
+  endtask
+
+endclass
 */

@@ -104,17 +104,6 @@ class aes_test_tb extends uvm_test;
 
     tb = aes_tb::type_id::create("tb", this);
 
-
-
-    // Connect virtual interface to driver & monitor (must exist in hw_top)
-  /*  if (!uvm_config_db#(virtual aes_interface)::get(this, "", "vif", vif))
-      `uvm_error(get_type_name(), "Virtual interface not found in config DB")
-    else begin
-      aes_vif_config::set(this, "tb.env.agent.driver",  "vif", vif);
-      aes_vif_config::set(this, "tb.env.agent.monitor", "vif", vif);
-      `uvm_info(get_type_name(), "Virtual interface connected to driver and monitor", UVM_LOW)
-    end
-  */
   endfunction
 
 
@@ -131,25 +120,12 @@ class aes_test_tb extends uvm_test;
     check_config_usage();
   endfunction
 
-/*
-  // Run Phase
-  virtual task run_phase(uvm_phase phase);
-    uvm_objection obj;
-    obj = phase.get_objection();
 
-    `uvm_info(get_type_name(), "AES Base Test Run Phase Started", UVM_HIGH)
-
-  obj.raise(this);
-   #2000ns; // Simulation run duration
- obj.drop(this);
-
-    `uvm_info(get_type_name(), "AES Base Test Run Phase Completed", UVM_LOW)
-  endtask
-*/
+// rand_packet
 
 virtual task run_phase(uvm_phase phase);
   rand_packet seq;
-  
+ 
   // NO objections here - let sequence handle it
   `uvm_info(get_type_name(), "AES Base Test Run Phase Started", UVM_HIGH)
   
@@ -161,6 +137,36 @@ virtual task run_phase(uvm_phase phase);
   // NO drop objection here
 endtask
 
+
+// ENCRYPTION
+/*
+virtual task run_phase(uvm_phase phase);
+  packet_encryption seq;
+
+  `uvm_info(get_type_name(), "AES Encryption Test Started", UVM_HIGH)
+
+  seq = packet_encryption::type_id::create("seq");
+  seq.starting_phase = phase;
+  seq.start(tb.env.agent.sequencer);  // send encryption packet
+
+  `uvm_info(get_type_name(), "AES Encryption Test Completed", UVM_LOW)
+endtask
+*/
+
+// Decryption
+/*
+virtual task run_phase(uvm_phase phase);
+  packet_decryption seq;
+
+  `uvm_info(get_type_name(), "AES Decryption Test Started", UVM_HIGH)
+
+  seq = packet_decryption::type_id::create("seq");
+  seq.starting_phase = phase;
+  seq.start(tb.env.agent.sequencer);  // send encryption packet
+
+  `uvm_info(get_type_name(), "AES Decryption Test Completed", UVM_LOW)
+endtask
+*/
 
 endclass : aes_test_tb
 
@@ -181,59 +187,166 @@ class simple_test extends aes_test_tb;
 
     `uvm_info(get_type_name(), "Building simple_test - setting default sequences", UVM_HIGH)
 
-/*
-   uvm_config_db#(uvm_object_wrapper)::set(
-  this,
-  "tb.env.agent.sequencer",
-  "default_sequence",
-  rand_packet::get_type()
-);
-*/
   endfunction
 
-
-
 endclass : simple_test
 
 
+
+
+//------------------------------------------------------
+// Encryption Test Class (Derives from aes_test_tb)
+//------------------------------------------------------
+class encryption_test extends aes_test_tb;
+  `uvm_component_utils(encryption_test)
+  
+  function new(string name = "encryption_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+  
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    `uvm_info(get_type_name(), "Building encryption_test", UVM_HIGH)
+  endfunction
+  
+  // Override run_phase to use packet_encryption sequence
+  virtual task run_phase(uvm_phase phase);
+    packet_encryption seq;
+    
+    `uvm_info(get_type_name(), "Encryption Test Run Phase Started", UVM_HIGH)
+    
+    seq = packet_encryption::type_id::create("seq");
+    seq.starting_phase = phase;
+    seq.start(tb.env.agent.sequencer);
+    
+    `uvm_info(get_type_name(), "Encryption Test Run Phase Completed", UVM_LOW)
+  endtask
+endclass : encryption_test
+
+
+
+
+
+//------------------------------------------------------
+// Decryption Test Class (Derives from aes_test_tb)
+//------------------------------------------------------
+class decryption_test extends aes_test_tb;
+  `uvm_component_utils(decryption_test)
+  
+  function new(string name = "decryption_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+  
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    `uvm_info(get_type_name(), "Building Decryption_test", UVM_HIGH)
+  endfunction
+  
+  // Override run_phase to use packet_decryption sequence
+  virtual task run_phase(uvm_phase phase);
+    packet_decryption seq;
+    
+    `uvm_info(get_type_name(), "Decryption Test Run Phase Started", UVM_HIGH)
+    
+    seq = packet_decryption::type_id::create("seq");
+    seq.starting_phase = phase;
+    seq.start(tb.env.agent.sequencer);
+    
+    `uvm_info(get_type_name(), "Decryption Test Run Phase Completed", UVM_LOW)
+  endtask
+endclass : decryption_test
+
+
+
+
+//------------------------------------------------------
+// Zero Key Test Class (Derives from aes_test_tb)
+//------------------------------------------------------
+class zero_key_test extends aes_test_tb;
+  `uvm_component_utils(zero_key_test)
+  
+  function new(string name = "zero_key_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+  
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    `uvm_info(get_type_name(), "Building zero_key_test", UVM_HIGH)
+  endfunction
+  
+  // Override run_phase to use zero_key sequence
+  virtual task run_phase(uvm_phase phase);
+    zero_key seq;
+    
+    `uvm_info(get_type_name(), "Zero Key Test Run Phase Started", UVM_HIGH)
+    
+    seq = zero_key::type_id::create("seq");
+    seq.starting_phase = phase;
+    seq.start(tb.env.agent.sequencer);
+    
+    `uvm_info(get_type_name(), "Zero Key Test Run Phase Completed", UVM_LOW)
+  endtask
+endclass
+
+
+
+//------------------------------------------------------
+// Zero Input Test Class (Derives from aes_test_tb)
+//------------------------------------------------------
+class zero_input_test extends aes_test_tb;
+  `uvm_component_utils(zero_input_test)
+  
+  function new(string name = "zero_input_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+  
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    `uvm_info(get_type_name(), "Building zero_input_test", UVM_HIGH)
+  endfunction
+  
+  // Override run_phase to use zero_input sequence
+  virtual task run_phase(uvm_phase phase);
+    zero_input seq;
+    
+    `uvm_info(get_type_name(), "Zero Input Test Run Phase Started", UVM_HIGH)
+    
+    seq = zero_input::type_id::create("seq");
+    seq.starting_phase = phase;
+    seq.start(tb.env.agent.sequencer);
+    
+    `uvm_info(get_type_name(), "Zero Input Test Run Phase Completed", UVM_LOW)
+  endtask
+endclass
 
 /*
-class simple_test extends aes_test_tb;
-    `uvm_component_utils(simple_test)
+//------------------------------------------------------
+// Reset Test Class (Derives from aes_test_tb)
+//------------------------------------------------------
+class reset_test extends aes_test_tb;
+  `uvm_component_utils(reset_test)
+  
+  function new(string name = "reset_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+  
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    `uvm_info(get_type_name(), "Building reset_test", UVM_HIGH)
+  endfunction
+  
+  // Override run_phase to use reset sequence
+  virtual task run_phase(uvm_phase phase);
+    zero_input seq;
     
-    function new(string name = "simple_test", uvm_component parent = null);
-        super.new(name, parent);
-    endfunction
+    `uvm_info(get_type_name(), "Reset Test Run Phase Started", UVM_HIGH)
     
-    virtual function void build_phase(uvm_phase phase);
-        super.build_phase(phase);
-        `uvm_info(get_type_name(), "Building simple_test", UVM_HIGH)
-        
-        // You can configure number of packets here if you want
-        uvm_config_db#(int)::set(this, "*", "num_packets", 10);
-    endfunction
+    seq = reset_packet::type_id::create("seq");
+    seq.starting_phase = phase;
+    seq.start(tb.env.agent.sequencer);
     
-    virtual task run_phase(uvm_phase phase);
-        rand_packet seq;
-        int num_pkts;
-        
-        `uvm_info(get_type_name(), "Simple Test Run Phase Started", UVM_HIGH)
-        
-        seq = rand_packet::type_id::create("seq");
-        seq.starting_phase = phase;
-        
-        // Get configured number of packets (or use default)
-        if (!uvm_config_db#(int)::get(this, "", "num_packets", num_pkts))
-            num_pkts = 10;  // Default
-        
-        seq.num_packets = num_pkts;
-        
-        seq.start(tb.env.agent.sequencer);
-        
-        `uvm_info(get_type_name(), "Simple Test Run Phase Completed", UVM_LOW)
-    endtask
-endclass : simple_test
+    `uvm_info(get_type_name(), "Reset Test Run Phase Completed", UVM_LOW)
+  endtask
+endclass
 */
-
-
 

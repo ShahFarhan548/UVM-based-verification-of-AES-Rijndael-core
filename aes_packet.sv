@@ -1,7 +1,7 @@
 
 class aes_packet extends uvm_sequence_item;
 
-   bit enc_dec;                
+  rand bit enc_dec;                
   rand bit [1:0] KL;  
   rand bit [31:0] KEY[7:0];        // 256-bit key
   rand bit [31:0] state_i[3:0];   // 128-bit plaintext/ciphertext
@@ -22,9 +22,11 @@ class aes_packet extends uvm_sequence_item;
     super.new(name);
   endfunction
 
+/*
   constraint key_constraint {
     foreach (KEY[i]) KEY[i] != 32'h0;
   }
+*/
 
 endclass
 
