@@ -6,20 +6,26 @@ class aes_agent extends uvm_agent;
 	
 	aes_driver driver;
 	aes_sequencer sequencer;
-	aes_monitor monitor;
+	aes_input_monitor monitor;
+
+
+
 
 	`uvm_component_utils_begin(aes_agent)
   		`uvm_field_enum(uvm_active_passive_enum, is_active, UVM_ALL_ON)
 	`uvm_component_utils_end
 	
+
 	function new(string name = "aes_agent", uvm_component parent);
 		super.new(name, parent);
 	endfunction
 	
 	function void build_phase (uvm_phase phase);
 		super.build_phase(phase);
+
+
+		monitor = aes_input_monitor::type_id::create("monitor", this);
 		
-		monitor = aes_monitor::type_id::create("monitor", this);
 		
 		if (is_active == UVM_ACTIVE) begin
   			sequencer = aes_sequencer::type_id::create("sequencer", this);

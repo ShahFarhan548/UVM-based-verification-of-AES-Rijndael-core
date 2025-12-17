@@ -35,7 +35,7 @@ output logic [31:0] state_o [3:0]   // State Output
                 state_o [2]= 0;
                 state_o [3]= 0;
             end
-        if(enable)
+       if(enable)
             begin    // Only write when Enable is High
                 state_o <= state_i; // Write input to output
             end

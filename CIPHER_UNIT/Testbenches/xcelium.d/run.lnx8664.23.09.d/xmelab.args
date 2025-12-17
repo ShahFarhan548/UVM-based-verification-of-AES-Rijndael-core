@@ -8,6 +8,8 @@
 1ns/1ns
 -ACCESS
 +rwc
+-ACCESS
++rwc
 -no_analogsolver
 -MESSAGES
 -XLMODE

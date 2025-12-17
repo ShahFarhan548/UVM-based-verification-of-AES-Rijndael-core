@@ -6,3 +6,5 @@
 1ns/1ns
 -ACCESS
 +rwc
+-ACCESS
++rwc

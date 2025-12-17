@@ -4,3 +4,6 @@
 //
 -f
 file.f
+-gui
+-access
++rwc

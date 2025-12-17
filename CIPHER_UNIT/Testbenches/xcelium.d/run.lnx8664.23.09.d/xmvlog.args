@@ -9,7 +9,7 @@
 -define
 UVM_PLI
 -INCDIR
-../sv
+/home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/CIPHER_UNIT/sv
 -INCDIR
 .
 ../sv/aes.sv
@@ -34,7 +34,7 @@ UVM_PLI
 ../sv/Inv_S_Box.sv
 ../sv/mux15_1.sv
 ../sv/S_Box.sv
-tb_01.sv
+aes_tb.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib
 -HDLVAR

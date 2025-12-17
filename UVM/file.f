@@ -9,7 +9,7 @@
 // Include directories
 
 -incdir "/home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/UVM"
--incdir "/home/cc/Fahad_DV/Final_Project/AES_by_Rijndael/ENCRYPTION_UNIT_V1/CIPHER_UNIT/sv"
+-incdir "/home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/CIPHER_UNIT/sv"
 
 // Compile UVC package & interface files
 
@@ -48,15 +48,23 @@
  ../CIPHER_UNIT/sv/aes.sv
  
 	
-
-// Simulation options
-+UVM_TESTNAME=simple_test
+/// Simulation options
++UVM_TESTNAME=encryption_test
 +UVM_VERBOSITY=UVM_FULL
 +SVSEED=random
 
-//-gui -access +rwc
+// Enable functional + code coverage
+-coverage all
+-covoverwrite
 
+// Instrument RTL DUT (NOT UVM class!)
+-covdut aes_top
 
+// Access for UVM & coverage
+-access +rwc
+
+// Optional GUI
+//-gui
 
 
 

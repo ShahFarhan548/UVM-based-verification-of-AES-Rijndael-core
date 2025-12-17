@@ -10,7 +10,7 @@
 //*** add compile files here
 
 // ============ 1. Include directories ============
--incdir ../sv
+-incdir /home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/CIPHER_UNIT/sv
 -incdir .
 
 //-gui
@@ -45,7 +45,7 @@
 
 
 
-tb_01.sv
+aes_tb.sv
 
 
 

@@ -1,0 +1,73 @@
+									
+												AES_TOP	
+										CLK         // System clock
+										CLR         // Clear/Reset signal
+										CK          // Key expansion clock/clear
+										KEY[7:0]    // 8 x 32-bit words = 256-bit maximum key
+										KL[1:0]     // Key Length selector (00=128, 01=192, 10=256 bits)
+										enc_dec     // Mode: 1=Encryption, 0=Decryption
+
+										state_i[3:0] // Input state (4 x 32-bit = 128-bit block)state_o[3:0] // Output state (128-bit encrypted/decrypted block)
+										CF          // Completion Flag (operation finished)
+										
+										
+ 												  CU_S 
+ 										
+										CLK         // System clock
+										CLR         // Clear/Reset - forces FSM to state 0
+										enc_dec     // Mode select: 1=Encrypt, 0=Decrypt
+										KL[1:0]     // Key Length: 00=128bit, 01=192bit, 10=256bit
+										KF          // Key expansion Finished flag (from KEXP module)
+ 												  
+										mux0-mux6   // Multiplexer control signals (datapath routing)
+										SE          // State Enable (load new value into state register)
+										SCLR        // State Clear (reset state register)
+										CF          // Completion Flag (ready for input/output)
+										R[3:0]      // Round number (0 to 10/12/14)
+ 												  
+ 												  		key expanision 
+ 												  		
+										 Inputs:
+										  CLK        // System clock
+										  R[3:0]     // Current round number (0-14)
+										  KL[1:0]    // Key length: 00=128, 01=192, 10=256 bits
+										  KEY[7:0]   // Original cipher key (8×32-bit = 256 bits max)
+										  CLR        // Clear/reset signal
+
+										Outputs:
+										  Rk[3:0]    //	 Round key for current round (4×32-bit = 128 bits)
+										  KF         // Key expansion Finished flag
+										  
+										  
+										  Key Length Detection:
+										  A = KL[1]           // 1 for 256-bit
+										B = KL[0]           // 1 for 192-bit
+										sel_nk4 = ~A & ~B   // 1 for 128-bit
+										
+										Rt = KL[1] ? 14 : (KL[0] ? 12 : 10)
+							dem1_11 (128-bit key, Nk=4):
+				
+				sel_nk4 & (~KF)   // Active only for 128-bit, disabled after KF
+				Select: R[3:0]           // Round number
+				Outputs: demout4_0 to demout4_10  // Enable signals for rounds 0-10
+				
+				``			dem1_9 (192-bit key, Nk=6):
+				
+				 B & (~KF)         // Active only for 192-bit
+				Select: R[3:0]
+				Outputs: demout6_0 to demout6_8   // Enable signals for rounds 0-8
+				
+						dem1_8 (256-bit key, Nk=8):
+				
+				systemverilogInput:
+				 A & (~KF)         // Active only for 256-bit
+				Select: R[3:0]
+				Outputs: demout8_0 to demout8_7   // Enable signals for rounds 0-7
+				
+				
+				
+				
+				
+										
+										
+						
