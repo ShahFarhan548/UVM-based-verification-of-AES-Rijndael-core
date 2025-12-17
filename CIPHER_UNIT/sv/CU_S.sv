@@ -31,7 +31,7 @@ logic cond4;//to check if R = Rt - 1
 logic cond5;//to reset R_reg based off of state
 
 //Round counter --- body
-assign Rt = KL[1]?(14):(KL[0]?(12):(10));// to choose rt 0 (4) = 10 ; 1 (6) = 11 ; 2 (8) = 14
+assign Rt = KL[1]?(14):(KL[0]?(10):(12));// to choose rt 0 (4) = 10 ; 1 (6) = 11 ; 2 (8) = 14
 
 always_comb
 begin

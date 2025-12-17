@@ -1,13 +1,12 @@
 xrun(64): 23.09-s006: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	23.09-s006: Started on Dec 06, 2025 at 13:35:44 PKT
+TOOL:	xrun(64)	23.09-s006: Started on Dec 12, 2025 at 15:31:19 PKT
 xrun
 	-f file.f
 		-64
 		-uvmhome /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d
 		-timescale 1ns/1ns
-		-incdir ../sv
+		-incdir /home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/CIPHER_UNIT/sv
 		-incdir .
-		-gui
 		-access +rwc
 		../sv/aes.sv
 		../sv/CU_S.sv
@@ -31,7 +30,9 @@ xrun
 		../sv/Inv_S_Box.sv
 		../sv/mux15_1.sv
 		../sv/S_Box.sv
-		tb_01.sv
+		aes_tb.sv
+	-gui
+	-access +rwc
 DEFINE std       ./STD
 |
 xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
@@ -212,9 +213,9 @@ xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cds.
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-Recompiling... reason: file './tb_01.sv' is newer than expected.
-	expected: Sat Dec  6 13:32:11 2025
-	actual:   Sat Dec  6 13:35:28 2025
+Recompiling... reason: file './aes_tb.sv' is newer than expected.
+	expected: Fri Dec 12 15:29:35 2025
+	actual:   Fri Dec 12 15:31:10 2025
 DEFINE std       ./STD
 |
 xrun: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,1): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/STD' (cds.lib command ignored).
@@ -351,10 +352,16 @@ xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14): cd
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xmvlog: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-file: tb_01.sv
+file: aes_tb.sv
+assign mci = a.Mc.state_i;;
+                          |
+xmvlog: *W,UEXPSC (aes_tb.sv,70|26): Ignored unexpected semicolon following SystemVerilog description keyword (state_i).
+assign mco = a.Mc.state_o;;
+                          |
+xmvlog: *W,UEXPSC (aes_tb.sv,71|26): Ignored unexpected semicolon following SystemVerilog description keyword (state_o).
 	module worklib.aes_tb:sv
-		errors: 0, warnings: 0
-xmvlog: *W,SPDUSD: Include directory ../sv given but not used.
+		errors: 0, warnings: 2
+xmvlog: *W,SPDUSD: Include directory /home/cc/Fahad_DV/Final_Project/practice_github/fahad_shah/CIPHER_UNIT/sv given but not used.
 	Total errors/warnings found outside modules and primitives:
 		errors: 0, warnings: 16
 DEFINE std       ./STD
@@ -547,14 +554,14 @@ xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14):
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-		worklib.aes_tb:sv <0x194e755b>
-			streams:  30, words: 24427
+		worklib.aes_tb:sv <0x0f276943>
+			streams:  30, words: 15864
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
 		Modules:                325      23
-		Registers:             1107     388
+		Registers:             1098     379
 		Scalar wires:           306       -
 		Expanded wires:         708      23
 		Vectored wires:        1622       -
@@ -617,9 +624,14 @@ Relinquished control to SimVision...
 xcelium> 
 xcelium> source /home/cc/mnt/XCELIUM2309/tools/xcelium/files/xmsimrc
 xcelium> source /home/cc/mnt/XCELIUM2309/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm aes_tb.CF aes_tb.CK aes_tb.CLK aes_tb.CLR aes_tb.KEY aes_tb.KL aes_tb.Kzero aes_tb.Mux0 aes_tb.Mux1 aes_tb.Mux2 aes_tb.Mux3 aes_tb.Mux4 aes_tb.Mux5 aes_tb.Mux6 aes_tb.STate aes_tb.arki aes_tb.arko aes_tb.bsi aes_tb.bso aes_tb.enc_dec aes_tb.mci aes_tb.mco aes_tb.round aes_tb.rsi aes_tb.rso aes_tb.state_i aes_tb.state_o
+Created probe 1
 xcelium> run
-Block processed, CF asserted after 14 cycles
-All blocks processed. Closing files.
-Simulation interrupted at 36835940 NS + 3
+Simulation stopped via $stop(1) at time 1140 NS + 0
+xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	23.09-s006: Exiting on Dec 06, 2025 at 13:36:18 PKT  (total: 00:00:34)
+...Regained control from SimVision
+-------------------------------------
+TOOL:	xrun(64)	23.09-s006: Exiting on Dec 12, 2025 at 21:20:44 PKT  (total: 05:49:25)

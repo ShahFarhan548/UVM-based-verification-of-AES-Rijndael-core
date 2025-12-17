@@ -1,6 +1,6 @@
 #! /bin/csh
 setenv CDS_Netlisting_Mode "Analog"
-setenv LM_LICENSE_FILE 5280@10.19.32.90 
+setenv LM_LICENSE_FILE 5280@10.19.32.90
 
 setenv CDS_LIC_FILE $LM_LICENSE_FILE
 setenv CDS_LIC_QA_TesT "./qaLog.txt"
@@ -30,7 +30,7 @@ setenv MODUS_HOME /home/cc/mnt/MODUS231
 setenv PEGASUS_HOME /home/cc/mnt/PEGASUS231
 #setenv JASPER_HOME /tools/
 #setenv MVS_HOME /tools/
-setenv VMANAGER_HOME /home/cc/mnt/VMANAGER2203
+setenv VMANAGER_HOME /home/cc/mnt/VMANAGER2203/tools.lnx86/vmgr
 #setenv ICADVM_HOME /
 #setenv INDAGOA_HOME /
 #setenv INTEGRAND_HOME /
@@ -42,7 +42,7 @@ setenv VMANAGER_HOME /home/cc/mnt/VMANAGER2203
 
 set path=($path ${CDSHOME}/bin ${CDSHOME}/share/bin ${CDSHOME}/tools.lnx86/bin ${CDSHOME}/tools/bin ${CDSHOME}/share/dfII/bin ${CDSHOME}/tools.lnx86/dfII/bin ${CDSHOME}/tools/dfII/bin)
 set path=($path ${INNOVUSHOME}/bin ${INNOVUSHOME}/share/bin ${INNOVUSHOME}/tools.lnx86/bin ${INNOVUSHOME}/tools/bin ${INNOVUSHOME}/share/dfII/bin ${INNOVUSHOME}/tools.lnx86/dfII/bin ${INNOVUSHOME}/tools/dfII/bin)
-#set path=($path ${XRUN_HOME}/bin ${XRUN_HOME}/share/bin ${XRUN_HOME}/tools.lnx86/bin ${XRUN_HOME}/tools/bin ${XRUN_HOME}/share/dfII/bin ${XRUN_HOME}/tools.lnx86/dfII/bin ${XRUN_HOME}/tools/dfII/bin)
+# set path=($path ${XRUN_HOME}/bin ${XRUN_HOME}/share/bin ${XRUN_HOME}/tools.lnx86/bin ${XRUN_HOME}/tools/bin ${XRUN_HOME}/share/dfII/bin ${XRUN_HOME}/tools.lnx86/dfII/bin ${XRUN_HOME}/tools/dfII/bin)
 set path= ($XRUN_HOME/bin $XRUN_HOME/tools.lnx86/bin/64bit $XRUN_HOME/tools/dfII/bin $XRUN_HOME/share/bin $XRUN_HOME/tools.lnx86/bin $path)
 set path=($path ${QRC_HOME}/bin ${QRC_HOME}/share/bin ${QRC_HOME}/tools.lnx86/bin ${QRC_HOME}/tools/bin ${QRC_HOME}/share/dfII/bin ${QRC_HOME}/tools.lnx86/dfII/bin ${QRC_HOME}/tools/dfII/bin)
 set path=($path ${SPECTRE_HOME}/bin ${SPECTRE_HOME}/share/bin ${SPECTRE_HOME}/tools.lnx86/bin ${SPECTRE_HOME}/tools/bin ${SPECTRE_HOME}/share/dfII/bin ${SPECTRE_HOME}/tools.lnx86/dfII/bin ${SPECTRE_HOME}/tools/dfII/bin)
@@ -77,4 +77,3 @@ echo "******************************************************"
 echo "                                                      "
 
 alias c 'clear'
-

@@ -117,9 +117,14 @@ begin
     #40
     
     #100
+    
+    state_i[3] = 32'h54776F20;
+    state_i[2] = 32'h4E696E65;
+    state_i[1] = 32'h2054776F;
+    state_i[0] = 32'h54774620;
+
 
 $stop;
-$finish;
 end
 
 endmodule

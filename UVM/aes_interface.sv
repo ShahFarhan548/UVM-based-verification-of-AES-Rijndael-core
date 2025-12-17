@@ -15,8 +15,21 @@ import uvm_pkg::*;
   logic [31:0] state_o [3:0];       // Output state from DUT
   logic CF;                         // Finish/Completion flag
 
-  
+// working
+
   bit drvstart, monstart;
+    bit driver_active = 0;  // ADD THIS
+    int packets_sent = 0;   // ADD THIS
+
+/*
+     bit drvstart, monstart;
+    bit driver_active = 0;
+    int packets_sent = 0;
+  
+    // Add these events
+    event driver_sent_packet;    // Driver triggers when packet is sent
+    event dut_completed_packet;  // Triggered when CF goes high
+*/
 
   // Local buffer (internal storage for stimulus)
   logic [31:0] key_mem [8];
@@ -25,24 +38,20 @@ import uvm_pkg::*;
   // ----------------------------
   // Reset Task
   // ----------------------------
-  task cipher_reset();
-    @(posedge CLR);
+
+task cipher_reset();
+    @(posedge CLR);  // This waits for reset DEASSERTION
     enc_dec   <= '0;
     KL        <= '0;
     CK        <= 1'b0;
-
-    foreach(KEY[i])   KEY[i]   <= 'hz;
-    foreach(state_i[i]) state_i[i] <= 'hz;
-
+    foreach(KEY[i])   KEY[i]   <= '0;  // Use '0 instead of 'hz
+    foreach(state_i[i]) state_i[i] <= '0;
     drvstart <= 0;
     monstart <= 0;
-
-    disable send_to_dut;
-  endtask : cipher_reset
-
+endtask
 
   // ----------------------------
-  // DRIVER TASK — Apply Inputs
+  // DRIVER TASK — Apply Inputs recent working
   // ----------------------------
   task send_to_dut(
         input bit enc_mode,                 // encrypt/decrypt
@@ -80,51 +89,73 @@ import uvm_pkg::*;
   // ----------------------------
   // MONITOR TASK — Collect Output
   // ----------------------------
-  // task collect_output(
-  //     input bit [31:0] state_in [3:0],  
-  //       output bit [31:0] out_state [3:0],
-  //        bit comp_flag
-  //       );
+//working
 
-  //  //@(posedge CLK );
-
-  //  @(posedge CLK iff (CF == 1'b1));
-
-  //   monstart = 1;
-
-  //   foreach (state_o[i]) begin
-  //     out_state[i] = state_o[i];
-  //   end
-  //   foreach(state_i[i]) begin
-  //     state_in[i] = state_i[i];
-  //   end
-
-  //   comp_flag = CF;
-
-  //   monstart = 0;
-  // endtask : collect_output
-
-
-  task collect_output(
+task collect_output(
+      
     output bit [31:0] out_state [3:0],
     output bit comp_flag
-   );
-    @(posedge CLK iff (CF == 1'b1));
+);
+    // Wait for CF to go high
+   @(posedge CLK iff (CF == 1'b1));
+   //  @(negedge CLK iff (CF == 1'b1));
+  // wait (CF == 1'b0);
+   // repeat (20) @(posedge CLK); 
+    monstart = 1;
+    
+    // Collect all outputs immediately (no clock waits inside loop!)
+    foreach(out_state[i]) begin
+        out_state[i] = state_o[i];
+    end
+    
+    comp_flag = CF;
+    monstart = 0;
 
+    
+    
+    // Wait for CF to go low before returning (ready for next packet)
+    @(posedge CLK iff (CF == 1'b0));
+endtask
+
+/*
+task collect_output(
+    output bit [31:0] out_state [3:0],
+    output bit [31:0] in_state  [3:0],
+    output bit [31:0] out_key   [7:0],
+    output bit [31:0] in_key    [7:0],
+    output bit        out_enc_dec,
+    output bit [1:0]  out_KL,
+    output bit        comp_flag
+);
+    // Wait for CF to go high (DUT done)
+    @(posedge CLK iff (CF == 1'b1));
     monstart = 1;
 
-    // Collect DUT outputs
+    // Capture DUT outputs
     foreach(out_state[i]) begin
-      @(posedge CLK)
         out_state[i] = state_o[i];
     end
 
-    // Collect completion flag
+    // Capture DUT inputs
+    foreach(in_state[i]) begin
+        in_state[i] = state_i[i];
+    end
+    foreach(in_key[i]) begin
+        in_key[i] = KEY[i];
+    end
+
+    // Capture control signals
+    out_enc_dec = enc_dec;
+    out_KL      = KL;
+
+    // Completion flag
     comp_flag = CF;
-
     monstart = 0;
-endtask
 
+    // Wait for CF to go low (ready for next packet)
+    @(posedge CLK iff (CF == 1'b0));
+endtask
+*/
 
   // ----------------------------
   // ASSERTIONS
